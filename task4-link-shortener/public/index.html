@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Link Shortener</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Link<span>Shortener</span></h1>
+    <p>Shorten long URLs, share them and see how many people click.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <form id="shorten-form" novalidate>
+        <label for="url">Long URL</label>
+        <input id="url" type="url" placeholder="https://example.com/a/very/long/link" required>
+        <label for="alias">Custom alias <small>(optional)</small></label>
+        <input id="alias" placeholder="my-link" maxlength="20">
+        <p id="form-error" class="error" role="alert"></p>
+        <button class="btn" type="submit">Shorten</button>
+      </form>
+      <div id="result" class="result hidden">
+        <span>Your short link:</span>
+        <a id="result-link" target="_blank" rel="noopener"></a>
+        <button id="copy-result" class="btn btn-small" type="button">Copy</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Your links</h2>
+      <table>
+        <thead>
+          <tr><th>Short link</th><th>Original URL</th><th>Clicks</th><th></th></tr>
+        </thead>
+        <tbody id="links-body"></tbody>
+      </table>
+      <p id="empty" class="empty hidden">No links yet. Create your first one above.</p>
+    </section>
+
+    <section id="analytics" class="card hidden">
+      <h2>Analytics: <span id="an-code"></span></h2>
+      <div class="an-grid">
+        <div class="stat"><b id="an-total">0</b><small>Total clicks</small></div>
+        <div class="stat"><b id="an-last">-</b><small>Last click</small></div>
+        <div class="stat"><b id="an-created">-</b><small>Created</small></div>
+      </div>
+      <h3>Clicks in the last 7 days</h3>
+      <div id="an-bars" class="bars"></div>
+      <h3>Top referrers</h3>
+      <ul id="an-refs" class="refs"></ul>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
